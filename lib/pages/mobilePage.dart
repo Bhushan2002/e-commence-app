@@ -1,3 +1,5 @@
+import 'package:ecommerce/data/imagesUrl.dart';
+import 'package:ecommerce/pages/brandPages/samsungPage.dart';
 import 'package:ecommerce/widgets/productCard.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -13,14 +15,13 @@ class MobilPage extends StatefulWidget {
 
 class _MobilPageState extends State<MobilPage> {
   List brands = [
-    "assets/brandLogos/samsung_882849.png",
-    "assets/brandLogos/google pixel.png",
-    'assets/brandLogos/apple-logo_747.png',
-    "assets/brandLogos/Motorola-Logo.png",
-    "assets/brandLogos/Redmi-by-Xiaomi-1.png",
-    "assets/brandLogos/OnePlus (1).png",
-    "assets/brandLogos/Realme (1).png",
-
+    samsungLogo,
+    googlePixelLogo,
+    appleLogo,
+    motorolaLogo,
+    redmiLogo,
+    oneplusLogo,
+    realmeLogo,
   ];
   late VideoPlayerController _playerController;
   late Future<void> _initializeVideoFuture;
@@ -29,7 +30,7 @@ class _MobilPageState extends State<MobilPage> {
     // TODO: implement initState
 
     _playerController = VideoPlayerController.networkUrl(Uri.parse(
-        'https://www.apple.com/105/media/ww/iphone-15/2023/434c1226-dcdc-47be-ae28-6cb67a3a5a7c/anim/design/large_2x.mp4'));
+        videoBanner));
     // _playerController = VideoPlayerController.asset('assets/galaxy-s23-ultra-highlights-design.mp4');
     _initializeVideoFuture = _playerController.initialize();
     _playerController.play();
@@ -67,16 +68,21 @@ class _MobilPageState extends State<MobilPage> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: brands.length,
-                itemBuilder: (context, index) => Container(
-                  alignment: Alignment.center,
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(60)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Image.asset(brands[index],height: 100,),
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SamsungPage()));
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.circular(60)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Image.asset(brands[index],height: 100,),
+                    ),
                   ),
                 ),
               ),
@@ -98,9 +104,9 @@ class _MobilPageState extends State<MobilPage> {
                 },
               ),
             ),
-            newLaunchBanner(url:'https://images.unsplash.com/photo-1678911820864-e2c567c655d7?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-            newLaunchBanner(url:'https://images.unsplash.com/photo-1697355359877-6aa55ec088a7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-            newLaunchBanner(url:'https://smartwaykart.com/wp-content/uploads/2023/10/Screenshot-2023-10-10-205817-768x312.png'),
+            newLaunchBanner(url: banner1),
+            newLaunchBanner(url:banner2),
+            newLaunchBanner(url:banner3),
 
 
           ],

@@ -13,13 +13,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
   @override
   Widget build(BuildContext context) {
+    // print(MediaQuery.of(context).size);
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
               backgroundColor: Colors.grey[200],
-              toolbarHeight: 70.0,
+              // toolbarHeight: MediaQuery.of(context).size.height / 13,//70
               actions: [
                 Container(
                   height: 50,
@@ -60,14 +65,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: height / 19.1,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 8.0),
                   child: Text(
                     "Most popular Products...",
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: height / 30.5,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Quicksand"),
                   ),
@@ -95,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                       fontFamily: "Quicksand"),
                 ),
                 Container(
-                  height: 410,
+                  height: height/1.86,
                   width: double.infinity,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
