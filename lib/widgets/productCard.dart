@@ -14,34 +14,37 @@ class PopularProductCard extends StatefulWidget {
 class PopularProductCardState extends State<PopularProductCard> {
   @override
   Widget build(BuildContext context) {
+
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Container(
       color: Colors.white60,
       child: Stack(children: [
         Positioned(
           child: Image.network(
             widget.imgUrl,
-            height: 320,
+            height: height / 2.38,
           ),
         ),
         Positioned(
-          top: 320,
-          left: 30,
+          top: height / 2.38,
+          left: width / 12,
           child: Container(
-            width: 260,
+            width: width / 1.38,
             child: Text(
               widget.title,
               softWrap: true,
               style: const TextStyle(
-                  fontSize: 35,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  fontFamily: "Playfair",
+                  fontFamily: "Quicksand",
                   overflow: TextOverflow.visible),
             ),
           ),
         ),
         Positioned(
-          right: 20,
-          top: 20,
+          right: width / 18,
+          top: width / 18,
           child: GestureDetector(
             onTap: () {
               setState(() {
@@ -58,11 +61,11 @@ class PopularProductCardState extends State<PopularProductCard> {
                 ? Icon(
                     Icons.favorite,
                     color: Colors.red,
-                    size: 40,
+                    size: height / 19.1 ,
                   )
                 : Icon(
                     Icons.favorite_border,
-                    size: 40,
+                    size: height / 19.1,
                     color: Colors.grey,
                   ),
           ),

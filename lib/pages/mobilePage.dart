@@ -41,29 +41,35 @@ class _MobilPageState extends State<MobilPage> {
   }
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(),
+
+      appBar: AppBar(
+        backgroundColor: Colors.grey[200],
+
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              height: 172,
+              height: height / 4.44,
               width: double.infinity,
               child: Text(
                 "Top Mobile Brands",
                 style: TextStyle(
                   fontFamily: "Quicksand",
-                  fontSize: 60,
+                  fontSize: height / 12.73,
                   fontWeight: FontWeight.w700,
                   overflow: TextOverflow.fade,
-                  wordSpacing: 10.0,
+                  wordSpacing: 5,
                   letterSpacing: 3.5,
                 ),
               ),
             ),
             Container(
-              height: 100,
+              height: height / 7.64,
               width: double.infinity,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -72,16 +78,19 @@ class _MobilPageState extends State<MobilPage> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>SamsungPage()));
                   },
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(60)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Image.asset(brands[index],height: 100,),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: height / 8.64,
+                      width: height / 8.64,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(60)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(brands[index],height: height / 7.64,),
+                      ),
                     ),
                   ),
                 ),
@@ -99,7 +108,7 @@ class _MobilPageState extends State<MobilPage> {
                       child: VideoPlayer(_playerController),
                     );
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                 },
               ),
